@@ -1,0 +1,9 @@
+node_modules
+build
+Dockerfile
+.eslintrc.js
+.prettierrc
+.dockerignore
+.git/
+.gitignore
+bin/

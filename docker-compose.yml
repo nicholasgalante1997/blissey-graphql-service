@@ -1,0 +1,21 @@
+services:
+  blissey:
+    image: blissey-graphql-service:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    environment:
+      - POKEMON_TCG_API_KEY=${POKEMON_TCG_API_KEY}
+      - MONGO_DB_USERNAME=${MONGO_DB_USERNAME}
+      - MONGO_DB_PASSWORD=${MONGO_DB_PASSWORD}
+      - MONGO_DB_CLUSTER_NAME=${MONGO_DB_CLUSTER_NAME}
+      - MONGO_DB_URI=${MONGO_DB_URI}
+      - MONGO_DB_COLLECTION_NAME=${MONGO_DB_COLLECTION_NAME}
+      - NODE_ENV=production
+    expose:
+      - "4000"
+    ports:
+      - "4000:4000"
+    restart: on-failure
+

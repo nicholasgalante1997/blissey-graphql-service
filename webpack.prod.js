@@ -1,7 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
+const dotenv = require('dotenv');
 
 const { EnvironmentPlugin } = webpack;
+
+dotenv.config();
 
 module.exports = {
   entry: path.resolve(process.cwd(), 'src', 'index.ts'),
@@ -23,7 +26,7 @@ module.exports = {
     clean: true,
     filename: 'index.js',
   },
-  target: 'node',
+  target: ['node', 'es2021'],
   node: {
     global: false,
   },
