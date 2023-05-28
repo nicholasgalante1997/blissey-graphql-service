@@ -21,4 +21,6 @@ RUN rm -rf \
 
 RUN yarn install --production
 
+EXPOSE 4000 
+
 CMD ["yarn", "start"]
