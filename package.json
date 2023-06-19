@@ -11,7 +11,7 @@
     "start": "node build/server/index.js",
     "format": "prettier --write src/ webpack.prod.js .eslintrc.js",
     "lint": "eslint --fix src",
-    "standardize": "yarn lint && yarn format"
+    "standardize": "pnpm lint && pnpm format"
   },
   "devDependencies": {
     "@babel/core": "^7.21.5",
@@ -45,6 +45,7 @@
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
     "graphql": "^16.6.0",
-    "mongodb": "5.3"
+    "mongodb": "5.3",
+    "pino": "^8.14.1"
   }
 }

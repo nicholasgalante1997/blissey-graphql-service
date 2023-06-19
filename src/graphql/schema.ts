@@ -14,9 +14,9 @@ const TCGPlayerPricesSchema = new GraphQLObjectType<any, any>({
   name: 'TCGPlayerPrice',
   fields: () => ({
     reverseHolofoil: { type: PriceGradeSchemaType },
-    normal: { type: PriceGradeSchemaType }
-  })
-})
+    normal: { type: PriceGradeSchemaType },
+  }),
+});
 
 const PriceGradeSchemaType = new GraphQLObjectType<any, any>({
   name: 'PriceGrade',
@@ -25,8 +25,8 @@ const PriceGradeSchemaType = new GraphQLObjectType<any, any>({
     mid: { type: GraphQLInt },
     high: { type: GraphQLInt },
     market: { type: GraphQLInt },
-    directLow: { type: GraphQLInt }
-  })
+    directLow: { type: GraphQLInt },
+  }),
 });
 
 const TCGPlayerSchemaType = new GraphQLObjectType<any, any>({
@@ -34,16 +34,16 @@ const TCGPlayerSchemaType = new GraphQLObjectType<any, any>({
   fields: () => ({
     url: { type: GraphQLString },
     updatedAt: { type: GraphQLString },
-    prices: { type: TCGPlayerPricesSchema }
-  })
+    prices: { type: TCGPlayerPricesSchema },
+  }),
 });
 
 const SetImageSchemaType = new GraphQLObjectType<any, any>({
   name: 'SetImage',
   fields: () => ({
     logo: { type: GraphQLString },
-    symbol: { type: GraphQLString }
-  })
+    symbol: { type: GraphQLString },
+  }),
 });
 
 const CardSetSchemaType = new GraphQLObjectType<any, any>({
@@ -57,24 +57,24 @@ const CardSetSchemaType = new GraphQLObjectType<any, any>({
     legalities: { type: LegalitySchemaType },
     releaseDate: { type: GraphQLString },
     updatedAt: { type: GraphQLString },
-    images: { type: SetImageSchemaType }
-  })
+    images: { type: SetImageSchemaType },
+  }),
 });
 
 const ResistanceSchemaType = new GraphQLObjectType<any, any>({
   name: 'Resistance',
   fields: () => ({
     type: { type: GraphQLString },
-    value: { type: GraphQLString }
-  })
+    value: { type: GraphQLString },
+  }),
 });
 
 const WeaknessSchemaType = new GraphQLObjectType<any, any>({
   name: 'Weakness',
   fields: () => ({
     type: { type: GraphQLString },
-    value: { type: GraphQLString }
-  })
+    value: { type: GraphQLString },
+  }),
 });
 
 const LegalitySchemaType = new GraphQLObjectType<any, any>({
@@ -82,16 +82,16 @@ const LegalitySchemaType = new GraphQLObjectType<any, any>({
   fields: () => ({
     unlimited: { type: GraphQLString },
     standard: { type: GraphQLString },
-    expanded: { type: GraphQLString }
-  })
-})
+    expanded: { type: GraphQLString },
+  }),
+});
 
 const ImageSchemaType = new GraphQLObjectType<any, any>({
   name: 'Image',
   fields: () => ({
     small: { type: GraphQLString },
-    large: { type: GraphQLString }
-  })
+    large: { type: GraphQLString },
+  }),
 });
 
 const CardMarketPriceSchemaType = new GraphQLObjectType<any, any>({
@@ -111,8 +111,8 @@ const CardMarketPriceSchemaType = new GraphQLObjectType<any, any>({
     reverseHoloSell: { type: GraphQLInt },
     reverseHoloTrend: { type: GraphQLInt },
     suggestedPrice: { type: GraphQLInt },
-    trendPrice: { type: GraphQLInt }
-  })
+    trendPrice: { type: GraphQLInt },
+  }),
 });
 
 const CardMarketSchemaType = new GraphQLObjectType<any, any>({
@@ -120,8 +120,8 @@ const CardMarketSchemaType = new GraphQLObjectType<any, any>({
   fields: () => ({
     url: { type: GraphQLString },
     updatedAt: { type: GraphQLString },
-    prices: { type: CardMarketPriceSchemaType }
-  })
+    prices: { type: CardMarketPriceSchemaType },
+  }),
 });
 
 const AttackSchemaType = new GraphQLObjectType<any, any>({
@@ -131,8 +131,8 @@ const AttackSchemaType = new GraphQLObjectType<any, any>({
     name: { type: GraphQLString },
     damage: { type: GraphQLString },
     text: { type: GraphQLString },
-    convertedEnergyCosts: { type: GraphQLInt }
-  })
+    convertedEnergyCosts: { type: GraphQLInt },
+  }),
 });
 
 const CardSchemaType = new GraphQLObjectType<any, any>({
@@ -158,9 +158,9 @@ const CardSchemaType = new GraphQLObjectType<any, any>({
     resistances: { type: new GraphQLList(ResistanceSchemaType) },
     set: { type: CardSetSchemaType },
     tcgplayer: { type: TCGPlayerSchemaType },
-    weaknesses: { type: new GraphQLList(WeaknessSchemaType) }
+    weaknesses: { type: new GraphQLList(WeaknessSchemaType) },
   }),
-})
+});
 
 const RootQuery = new GraphQLObjectType<any, any>({
   name: 'RootQueryType',
@@ -173,12 +173,12 @@ const RootQuery = new GraphQLObjectType<any, any>({
     },
     card: {
       type: CardSchemaType,
-      args: { id: { type: GraphQLString }},
-      async resolve(parentValue, args){
+      args: { id: { type: GraphQLString } },
+      async resolve(parentValue, args) {
         const card = await dbClient.getCardById(args.id);
         return card;
-      }
-    }
+      },
+    },
   }),
 });
 
